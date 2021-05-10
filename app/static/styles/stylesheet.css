@@ -1,0 +1,334 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+}
+
+a{text-decoration: none;}
+
+:root{
+    --blue: #116fff;
+    --red: #e92929;
+    --light-blue: #009efa;
+
+}
+
+
+/* HEADER ---------------------------------------*/
+header{
+    background: black;
+
+}
+
+header div{
+    max-width: 1440px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img{
+    height: 4rem;
+    width: auto;
+}
+
+body{
+    background: #00050b
+}
+
+/* BLEACH ---------------------------------------*/
+#bleach{
+    height: 0.75rem;
+    width: auto;
+    margin-left: 1rem;
+    transform: rotate(90deg);
+}
+
+.bleachUp{
+    transform: rotate(0deg)!important;
+}
+
+.bleachDown{
+    transform: rotate(180deg)!important;
+}
+
+
+/* MAIN ---------------------------------------*/
+main{
+    max-width: 1440px;
+    margin: auto;
+}
+
+main a{
+    color: var(--blue);
+}
+
+table a:hover, #add:hover{
+    color: var(--light-blue);
+}
+
+#excluir{
+    color:var(--red);
+    opacity: 0.5;
+}
+
+#excluir:hover{
+    opacity: 1;
+}
+
+#links{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Busca -------------------------------*/
+.busca{
+    border:solid 1px var(--blue);
+    border-radius:15px;
+    width:300px;
+    display: flex;
+    padding: 0.5rem 1rem;
+    align-items: center;
+    background: white;
+}
+
+.busca a{
+    color: var(--red);
+    background: white;
+}
+
+
+.busca div{
+    display: block;
+    height: 5rem;
+    width: 5rem;
+}
+
+#txtBusca{
+    float:left;
+    background-color:transparent;
+    padding-left:5px;
+    font-style:italic;
+    font-size:18px;
+    border:none;
+    height:32px;
+    width:260px;
+    outline: none;
+    color: black;
+  }
+
+#imgBusca{
+    height: 1rem;
+    margin: 0 0 0 10px;
+}
+
+#buscar{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* TABLE -------------------------------*/
+
+h1{
+    text-align: center;
+    padding: 1rem 0rem;
+    margin:  1rem 0rem;
+    font-size: 45px;
+    font-weight: bold;
+    color: var(--blue);
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
+}
+
+table{
+    margin: 25px 0;
+    width: 100%;
+    height: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    overflow: scroll;
+}
+
+thead tr{
+    text-align: left;
+    color: white;
+    font-weight: bold;
+    background: var(--blue);
+    
+}
+
+table th:first-child{
+    border-radius: 0.5rem 0 0 0
+}
+
+table th:last-child{
+    border-radius: 0 0.5rem 0 0;
+}
+
+
+table th, table td{
+    padding: 12px 15px;
+}
+
+tbody tr{
+    background: white;
+    border-bottom: solid silver 1px;
+}
+
+tbody tr:hover{
+    color: var(--blue)
+}
+
+tbody tr:nth-of-type(even){
+    background: #f3f3f3;
+}
+
+tbody tr:last-of-type{
+    border-bottom: solid 2px var(--blue);
+}
+
+
+
+/* MODAL --------------------------------------*/
+.modal-overlay{
+    width: 100%;
+    height: 100%; 
+    position: fixed;
+    display: flex;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal{
+    width: 90%;
+    max-width: 500px;
+    border-radius: 1.5rem;
+    position: relative;
+    height: 32rem;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1.0rem
+}
+
+
+form{
+    width: 100%;
+    height: 100%;
+    padding: 3rem;
+    display: block;
+}
+
+form h2{
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-top: 1rem;
+    color: var(--blue);
+    margin-bottom: -1rem;
+}
+.inputs{
+    margin-top: 1.2rem;
+    height: 40px;
+    width: 100%;
+    position: relative;
+}
+
+.inputs input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 17px;
+    border-bottom: 2px silver solid;
+    outline: none;
+}
+
+.inputs input:focus ~label,
+.inputs input:valid ~label{
+    transform: translateY(-20px);
+    font-size: 15px;
+    color: var(--blue)
+}
+
+.inputs label{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: grey;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+#line{
+    position: absolute;
+    bottom: 0px;
+    height: 2px;
+    width: 100%;
+}
+
+#line:before{
+    position: absolute;
+    content: " ";
+    background: var(--blue);
+    height: 100%;
+    width: 100%;
+    transform: scaleX(0);
+    margin-top: 2px;
+    transition: transform 0.3s ease;
+}
+
+.inputs input:focus ~#line:before,
+.inputs input:valid ~#line:before{
+    transform: scaleX(1);
+}
+
+.commands{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+}
+
+.commands a{
+    color: var(--red);
+    text-align: center;
+    border: var(--red) solid 2px;
+    border-radius: 0.45rem;
+    font-weight: bold;
+    padding: 0.5rem 2.7rem;
+    opacity: 0.5;
+}
+
+.commands a:hover{
+    opacity: 1;
+}
+
+.commands button{
+    background: var(--blue);
+    color: white;
+    border: none;
+    border-radius: 0.45rem;
+    padding: 0.5rem 3rem;
+    cursor: pointer;
+}
+
+.commands button:hover{
+    background-color: var(--light-blue);
+}
+
+#erro{
+    font-weight: bold;
+    font-size: 20px;
+    position: static;
+    visibility: hidden;
+    color: var(--red);
+}

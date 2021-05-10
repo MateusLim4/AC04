@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar aluno</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/styles/stylesheet.css">
+
+</head>
+<body>
+    <style>
+        #line.cep:before{background:{{style}}} 
+        .inputs input:focus ~#cepName,
+        .inputs input:valid ~#cepName{
+            color:{{style}}
+        }
+        #erro{
+            text-align: center;
+            margin-top: 1.5rem;
+            visibility: {{visibility}};
+        }
+    </style>
+    <section>
+        <header>
+            <div>
+                <a href="#"><img src="../static/images/logo-new.png" alt="logo"></a>
+            </div>    
+        </header>
+        <main>
+            <section>
+                <h1>ALUNOS MATRICULADOS</h1>
+                <div id=links>
+                    <a href="/create" id='add'>+ Adicionar aluno</a>
+                    <form class='busca' method="POST" action="/find" autocomplete="off" >
+                        <input type="text" id="txtBusca" name='texto' maxlength="60" placeholder="Buscar...">
+                        <button type="submit" id=buscar><img src="../static/images/magnifying-glass-search.svg" id='imgBusca' alt="lupa"></button>
+                    </form>
+                </div>
+    
+                <table>
+                    <thead>
+                        <tr>
+                            <th>RA</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Logradouro</th>
+                            <th>Numero</th>
+                            <th>Cep</th>
+                            <th>Complemento</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for a in alunos %}
+                        <tr>
+                            <td>{{a.ra}}</td>
+                            <td>{{a.nome}}</td>
+                            <td>{{a.email}}</td>
+                            <td>{{a.logradouro}}</td>
+                            <td>{{a.numero}}</td>
+                            <td>{{a.cep}}</td>
+                            <td>{{a.complemento}}</td>
+                            <td><a href="update/{{a.ra}}">Editar</a></td>
+                            <td><a href="delete/{{a.ra}}" id=excluir>Excluir</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+    
+            </section>
+        </main>
+        
+    <div class='modal-overlay active'>
+        <div class="modal">
+            <form action="/create" method="POST" autocomplete="off">
+                <h2> CADASTRAR ALUNO</h2>
+                <p id='erro'>CEP inválido</p>
+                <div class="inputs">
+                    <input type="text" name='nome' maxlength="60" value='{{aluno.nome}}' required>
+                    <label> Nome </label>
+                    <div id="line"></div>
+                </div>
+                <div class="inputs">
+                    <input type="text" name='email' maxlength="50" value='{{aluno.email}}' required>
+                    <label> Email </label>
+                    <div id="line"></div>
+                </div>
+                <div class="inputs">
+                    <input type="text" name='cep' maxlength="10" value='{{aluno.cep}}' required>
+                    <label id='cepName'> Cep </label>
+                    <div id="line" class='cep'></div>
+                </div>
+                <div class="inputs">
+                    <input type="text" name='numero' maxlength="20" value='{{aluno.numero}}' required>
+                    <label> Numero </label>
+                    <div id="line"></div>
+                </div>
+                <div class="inputs">
+                    <input type="text" name='complemento' maxlength="60" value='{{aluno.complemento}}' required>
+                    <label> Complemento </label>
+                    <div id="line"></div>
+                </div>
+                <div class=commands>
+                    <a href="{{url_for('index')}}">Descartar</a>
+                    <button type="submit">Enviar</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</body>
+</html>
